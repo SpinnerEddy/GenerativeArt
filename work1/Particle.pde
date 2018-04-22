@@ -35,6 +35,8 @@ class Particle{
     velocity.add(acceleration);
     position.add(velocity);
     acceleration.mult(0);
+    
+    velocity.mult(0.98);
   }
   
   void updateAngle(){
@@ -57,7 +59,21 @@ class Particle{
     colorMode(HSB);
     stroke(strokeHu,255,255,alpha);
     fill(fillHu,255,255,alpha);
-    ellipse(position.x,position.y,radius,radius);
+    //ellipse(position.x,position.y,radius*2,radius*2);
+    rectMode(CENTER);
+    pushMatrix();
+    translate(position.x,position.y);
+    rotate(angle);
+    rect(0,0,radius*2,radius*2);
+    popMatrix();
   }
   
+  void edgeChecker(){
+    if(position.x > width || position.x < 0){
+      velocity.x *= -1;
+    }
+    if(position.y > height || position.y < 0){
+      velocity.y *= -1;
+    }
+  }
 }
