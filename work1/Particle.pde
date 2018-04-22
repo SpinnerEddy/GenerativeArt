@@ -43,10 +43,21 @@ class Particle{
     aAcceleration *= 0;
   }
   
+  void applyForce(PVector f){
+    PVector force = f.div(mass);
+    acceleration.add(force);
+  }
+  
+  void applyForceAngle(float f){
+    float force = f / mass;
+    aAcceleration += force;
+  }
+  
   void display(){
     colorMode(HSB);
     stroke(strokeHu,255,255,alpha);
     fill(fillHu,255,255,alpha);
     ellipse(position.x,position.y,radius,radius);
   }
+  
 }
