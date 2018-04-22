@@ -5,7 +5,8 @@ class Attractor extends Particle{
   Attractor(float x,float y){
     super(x,y);
     velocity = new PVector(0,0);
-    G = 0.5;
+    G = 1;
+    mass = 20;
   }
   
   void display(){

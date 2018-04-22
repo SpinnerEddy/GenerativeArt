@@ -10,9 +10,9 @@ void setup(){
 
 void draw(){
   //background(0);
-  //fadeBackground();
+  fadeBackground();
+  //blendMode(ADD);
   particleManager.run();
-  //filter(BLUR);
 }
 
 void fadeBackground(){
@@ -20,4 +20,8 @@ void fadeBackground(){
   fill(0,20);
   noStroke();
   rect(0,0,width,height);
+}
+
+void mousePressed(){
+  saveFrame("frame/Frame-####.png");
 }

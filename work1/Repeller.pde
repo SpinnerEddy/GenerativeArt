@@ -5,7 +5,8 @@ class Repeller extends Particle{
   Repeller(float x,float y){
     super(x,y);
     velocity = new PVector(0,0);
-    G = 0.5;
+    G = 1;
+    mass = 70;
   }
   
   void display(){
