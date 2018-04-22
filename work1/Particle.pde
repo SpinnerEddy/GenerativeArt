@@ -5,6 +5,7 @@ class Particle{
   
   float fillHu;
   float strokeHu;
+  float alpha;
   
   float angle;
   float aVelocity;
@@ -20,6 +21,7 @@ class Particle{
     
     fillHu = random(255);
     strokeHu = random(255);
+    alpha = 255;
     
     angle = random(TWO_PI);
     aVelocity = 0;
@@ -27,5 +29,24 @@ class Particle{
     
     radius = 10;
     mass = 1;
+  }
+  
+  void update(){
+    velocity.add(acceleration);
+    position.add(velocity);
+    acceleration.mult(0);
+  }
+  
+  void updateAngle(){
+    aVelocity += aAcceleration;
+    angle += aVelocity;
+    aAcceleration *= 0;
+  }
+  
+  void display(){
+    colorMode(HSB);
+    stroke(strokeHu,255,255,alpha);
+    fill(fillHu,255,255,alpha);
+    ellipse(position.x,position.y,radius,radius);
   }
 }
