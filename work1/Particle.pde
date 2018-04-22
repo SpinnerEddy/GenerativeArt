@@ -14,21 +14,27 @@ class Particle{
   float radius;
   float mass;
   
+  float G;
+  
   Particle(float x,float y){
     position = new PVector(x,y);
-    velocity = new PVector(0,0);
+    //velocity = new PVector(0,0);
+    velocity = PVector.random2D().mult(random(0.1,4));
     acceleration = new PVector(0,0);
     
     fillHu = random(255);
     strokeHu = random(255);
-    alpha = 255;
+    alpha = 50;
     
     angle = random(TWO_PI);
-    aVelocity = 0;
-    aVelocity = 0;
+    aVelocity = random(-0.5,0.5);
+    aAcceleration = 0;
     
+    //radius = random(10,20);
     radius = 10;
-    mass = 1;
+    //mass = radius/10;
+    mass = random(1,2);
+    G = abs(aVelocity)*10;
   }
   
   void update(){
@@ -57,14 +63,16 @@ class Particle{
   
   void display(){
     colorMode(HSB);
+    //noStroke();
     stroke(strokeHu,255,255,alpha);
+    //noFill();
     fill(fillHu,255,255,alpha);
     //ellipse(position.x,position.y,radius*2,radius*2);
     rectMode(CENTER);
     pushMatrix();
     translate(position.x,position.y);
     rotate(angle);
-    rect(0,0,radius*2,radius*2);
+    rect(0,0,radius,radius);
     popMatrix();
   }
   
@@ -76,4 +84,26 @@ class Particle{
       velocity.y *= -1;
     }
   }
+  
+  //PVector attract(Particle p){
+  //  PVector force = PVector.sub(position,p.position);
+  //  float distance = force.mag();
+  //  distance = constrain(distance,radius/2,radius*2);
+  //  force.normalize();
+    
+  //  float strength = (G * mass * p.mass) / (distance * distance);
+  //  force.mult(strength);
+  //  return force;
+  //}
+  
+  //PVector repel(Particle p){
+  //  PVector force = PVector.sub(position,p.position);
+  //  float distance = force.mag();
+  //  distance = constrain(distance,radius/2,radius*2);
+  //  force.normalize();
+    
+  //  float strength = -(G * mass * p.mass) / (distance * distance);
+  //  force.mult(strength);
+  //  return force;
+  //}
 }

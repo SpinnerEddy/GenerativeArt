@@ -1,27 +1,18 @@
-Particle[] particles;
+ParticleManager particleManager;
 
 void setup(){
   size(800,800);
-  background(0);
-  particles = new Particle[10];
-  for(int i = 0; i < particles.length; i++){
-    particles[i] = new Particle(random(width),random(height));
-  }
-  
+  background(0); 
+  smooth();
+  colorMode(HSB);
+  particleManager = new ParticleManager();
 }
 
 void draw(){
   //background(0);
-  fadeBackground();
-  for(int i = 0; i < particles.length; i++){
-    PVector force = new PVector(random(-1,1),random(-1,1));
-    particles[i].applyForce(force);
-    particles[i].applyForceAngle(force.mag());
-    particles[i].update();
-    particles[i].updateAngle();
-    particles[i].display();
-    particles[i].edgeChecker();
-  }
+  //fadeBackground();
+  particleManager.run();
+  //filter(BLUR);
 }
 
 void fadeBackground(){
