@@ -6,6 +6,8 @@ class ParticleManager{
   Attractor attractor;
   Repeller repeller;
   
+  float repelRange;
+  
   ParticleManager(){
     particles = new ArrayList<Particle>();
     for(int i = 0; i < 1000; i++){
@@ -20,6 +22,7 @@ class ParticleManager{
     
     attractor = new Attractor(width/2,height/2);
     repeller = new Repeller(width/2,height/2);
+    repelRange = 100;
   }
   
   void run(){
@@ -35,7 +38,7 @@ class ParticleManager{
       //    p.applyForce(force);
       //  }
       //}
-      if(dist(p.position.x,p.position.y,width/2,height/2) < 200){
+      if(dist(p.position.x,p.position.y,width/2,height/2) < repelRange){
         PVector force = repeller.repel(p);
         p.applyForce(force);
       }else{
@@ -52,6 +55,7 @@ class ParticleManager{
       p.edgeChecker();
     }
     //attractor.display();
+    repelRange = 200 + 100 * sin(frameCount*0.04);
   }
   
   void addParticle(){
