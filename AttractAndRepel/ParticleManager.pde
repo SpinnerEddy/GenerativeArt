@@ -28,16 +28,6 @@ class ParticleManager{
   void run(){
     for(int i = particles.size()-1; i >= 0; i--){
       Particle p = particles.get(i);
-      //for(int j = 0; j < 10; j++){
-      //  if(dist(p.position.x,p.position.y,
-      //          repellers.get(j).position.x,repellers.get(j).position.y) < 100){
-      //    PVector force = repellers.get(j).repel(p);
-      //    p.applyForce(force);
-      //  }else{
-      //    PVector force = attractors.get(j).attract(p);
-      //    p.applyForce(force);
-      //  }
-      //}
       if(dist(p.position.x,p.position.y,width/2,height/2) < repelRange){
         PVector force = repeller.repel(p);
         p.applyForce(force);
