@@ -10,8 +10,8 @@ void setup(){
 
 void draw(){
   //background(0);
-  fadeBackground();
-  //blendMode(ADD);
+  //fadeBackground();
+  blendMode(ADD);
   particleManager.run();
 }
 

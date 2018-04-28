@@ -24,7 +24,7 @@ class Particle{
     
     fillHu = random(255);
     strokeHu = random(255);
-    alpha = 200;
+    alpha = 10;
     
     angle = random(TWO_PI);
     aVelocity = random(-0.2,0.2);

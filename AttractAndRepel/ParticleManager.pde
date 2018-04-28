@@ -22,7 +22,7 @@ class ParticleManager{
     
     attractor = new Attractor(width/2,height/2);
     repeller = new Repeller(width/2,height/2);
-    repelRange = 100;
+    repelRange = 300;
   }
   
   void run(){
@@ -45,7 +45,7 @@ class ParticleManager{
       p.edgeChecker();
     }
     //attractor.display();
-    repelRange = 200 + 100 * sin(frameCount*0.04);
+    //repelRange = 200 + 100 * sin(frameCount*0.04);
   }
   
   void addParticle(){
